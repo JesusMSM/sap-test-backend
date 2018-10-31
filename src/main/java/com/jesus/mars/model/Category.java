@@ -14,6 +14,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "category_id")
 	private int id;
 	
 	@NotNull
@@ -23,13 +24,6 @@ public class Category {
 	@NotNull
 	@Column(nullable = false)
 	private int priority;
-
-	/*
-	 * public Category(String name, int priority) throws Exception { if(priority <=
-	 * 0 || priority > 5) throw new
-	 * Exception("Priority value must be a value between 1 and 5"); this.name =
-	 * name; this.priority = priority; }
-	 */
 
 	public int getId() {
 		return id;

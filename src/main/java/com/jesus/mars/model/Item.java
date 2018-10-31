@@ -31,19 +31,10 @@ public class Item {
 	@Column(nullable = false)
 	private double weight;
 	
-	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false, updatable = false)
 	private Category category;
 	
-	public Item(int id, String name, String description, double weight, Category category) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.weight = weight;
-		this.category = category;
-	}
 
 	public int getId() {
 		return id;
