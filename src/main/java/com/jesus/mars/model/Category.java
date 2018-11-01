@@ -14,8 +14,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id")
-	private int id;
+	private Long id;
 	
 	@NotNull
 	@Column(nullable = false)
@@ -25,11 +24,11 @@ public class Category {
 	@Column(nullable = false)
 	private int priority;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
