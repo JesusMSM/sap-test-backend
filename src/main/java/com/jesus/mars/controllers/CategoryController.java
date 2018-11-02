@@ -1,8 +1,8 @@
 package com.jesus.mars.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +22,9 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository repository;
 
-	@GetMapping("/categories")
-    public Page<Category> getCategories(Pageable pageable) {
-        return repository.findAll(pageable);
+	@GetMapping("/api/categories")
+    public List<Category> getCategories() {
+        return repository.findAll();
     }
 	
 	/*@GetMapping
@@ -32,18 +32,18 @@ public class CategoryController {
 		return repository.findAll();
 	}*/
 
-	@GetMapping("/categories/{categoryId}")
+	@GetMapping("/api/categories/{categoryId}")
 	public Category find(@PathVariable Long categoryId) {
 		return repository.findOne(categoryId);
 	}
 
 	
-	@PostMapping("/categories")
+	@PostMapping("/api/categories")
 	public Category create(@RequestBody Category category) {
 		return repository.save(category);
 	}
 	
-	@PutMapping("/categories/{categoryId}")
+	@PutMapping("/api/categories/{categoryId}")
 	public Category update(@PathVariable Long categoryId, @RequestBody Category category) throws BadHttpRequest {
 		if (repository.exists(categoryId)) {
 			return repository.save(category);
@@ -52,7 +52,7 @@ public class CategoryController {
 		}
 	}
 
-	@DeleteMapping("/categories/{categoryId}")
+	@DeleteMapping("/api/categories/{categoryId}")
 	public void delete(@PathVariable Long categoryId) {
 		repository.delete(categoryId);
 	}

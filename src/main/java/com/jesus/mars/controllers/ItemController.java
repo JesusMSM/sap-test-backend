@@ -1,10 +1,12 @@
 package com.jesus.mars.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,12 +32,16 @@ public class ItemController {
 	@Autowired
 	private CategoryRepository catRepository;
 
-	@GetMapping
+	@GetMapping("/api/items")
 	public Iterable<Item> findAll() {
-		return repository.findAll();
+		List<Item> list = repository.findAll();
+		for(int i=0; i<list.size(); i++) {
+			list.get(i).setCatId(list.get(i).getCategory().getId());
+		}
+		return list;
 	}
 
-	@GetMapping("/categories/{categoryId}/items")
+	@GetMapping("/api/categories/{categoryId}/items")
     public List<Item> getItemsByCategoryId(@PathVariable Long categoryId) {
         return repository.findByCategoryId(categoryId);
     }
@@ -45,7 +51,7 @@ public class ItemController {
 		return repository.findOne(id);
 	}*/
 
-	@PostMapping("/categories/{categoryId}/items")
+	@PostMapping("/api/categories/{categoryId}/items")
 	public Item create(@PathVariable Long categoryId,
             @Valid @RequestBody Item item) {
 		Category category = catRepository.findOne(categoryId);
@@ -54,7 +60,7 @@ public class ItemController {
 		return repository.save(item);
 	}
 
-	@DeleteMapping("/categories/{categoryId}/items/{itemId}")
+	@DeleteMapping("/api/categories/{categoryId}/items/{itemId}")
 	public ResponseEntity<?> delete(@PathVariable Long categoryId,
             @PathVariable Long itemId) {
 		if(catRepository.findOne(categoryId)==null) {
@@ -68,7 +74,7 @@ public class ItemController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PutMapping("/categories/{categoryId}/items/{itemId}")
+	@PutMapping("/api/categories/{categoryId}/items/{itemId}")
 	public Item update(@PathVariable Long categoryId,
             @PathVariable Long itemId,
             @Valid @RequestBody Item itemRequest) {

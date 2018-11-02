@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,6 +42,9 @@ public class Item {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private Category category;
+	
+	@Transient
+	private Long catId;
 	
 
 	public Long getId() {
@@ -82,5 +86,15 @@ public class Item {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public Long getCatId() {
+		return catId;
+	}
+
+	public void setCatId(Long catId) {
+		this.catId = catId;
+	}
+	
+	
 	
 }
