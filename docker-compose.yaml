@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mysql-docker-container:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=mars_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - /data/mysql
+  sap-test-backend:
+    image: sap-test-backend-image
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_HOST=%
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=mars_db
+      - DATABASE_PORT=3306
+    depends_on:
+      - mysql-docker-container
+    ports:
+      - 8087:8080
+    volumes:
+      - /data/sap-test-backend
