@@ -17,4 +17,10 @@ docker-compose build
 docker-compose up
 ```
 
-Once it has been launched, it will be listening requests at the port 8087,
+Once it has been launched, it will be listening requests at the port 8087.
+
+It can be found as well in docker hub: https://hub.docker.com/r/jesusmsanchez93/sap-test-backend/
+
+```
+docker pull jesusmsanchez93/sap-test-backend
+```
