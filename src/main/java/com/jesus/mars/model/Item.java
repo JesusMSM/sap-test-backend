@@ -45,7 +45,17 @@ public class Item {
 	
 	@Transient
 	private Long catId;
+
+	public Item() {}
 	
+	public Item(Long id, String name, String description, double weight, Category category, Long catId) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.weight = weight;
+		this.category = category;
+		this.catId = catId;
+	}
 
 	public Long getId() {
 		return id;

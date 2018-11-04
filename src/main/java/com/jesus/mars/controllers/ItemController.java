@@ -84,6 +84,8 @@ public class ItemController {
 		if(repository.findOne(itemId)==null) {
             throw new ResourceNotFoundException("Item not found with id " + itemId);
         }
+		itemRequest.setCatId(categoryId);
+		itemRequest.setCategory(catRepository.findOne(categoryId));
 		
 		return repository.save(itemRequest);
 		

@@ -23,6 +23,14 @@ public class Category {
 	@NotNull
 	@Column(nullable = false)
 	private int priority;
+	
+	public Category() {}
+	
+	public Category(Long id, String name, int priority) {
+		this.id = id;
+		this.name = name;
+		this.priority = priority;
+	}
 
 	public Long getId() {
 		return id;

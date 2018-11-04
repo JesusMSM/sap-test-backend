@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: SAP test backend
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: jesus
+Built-By: Jesus
 Implementation-Vendor-Id: sap-test-backend
-Build-Jdk: 1.8.0_161
+Build-Jdk: 1.8.0_101
 Implementation-URL: http://projects.spring.io/spring-boot/sap-test-bac
  kend/
 Created-By: Maven Integration for Eclipse
