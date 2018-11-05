@@ -24,3 +24,36 @@ It can be found as well in docker hub: https://hub.docker.com/r/jesusmsanchez93/
 ```
 docker pull jesusmsanchez93/sap-test-backend
 ```
+
+## Output JSON structure
+
+Making a HTTP GET request to http://localhost:8087/api/categories will result in the following JSON:
+
+```
+[
+    {
+        "id": 1,
+        "name": "Category 1",
+        "priority": 1
+    },
+    {
+        "id": 2,
+        "name": "Category 2",
+        "priority": 3
+    }
+]
+```
+HTTP GET http://localhost:8087/api/items
+```
+[
+    {
+        "id": 1,
+        "name": "Item 1",
+        "description": "Description for item 1",
+        "weight": 5,
+        "catId": 1
+    }
+]
+```
+
+More HTTP request can be found in https://github.com/JesusMSM/sap-test-frontend repository.
