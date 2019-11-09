@@ -49,4 +49,4 @@ HTTP GET http://localhost:8087/api/items
 ]
 ```
 
-More HTTP request can be found in https://github.com/JesusMSM/sap-test-frontend repository.
+More HTTP request can be found in https://github.com/JesusMSM/test-frontend repository.
