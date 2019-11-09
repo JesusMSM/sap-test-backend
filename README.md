@@ -18,12 +18,6 @@ docker-compose up
 
 Once it has been launched, it will be listening requests at the port 8087.
 
-It can be found as well in docker hub: https://hub.docker.com/r/jesusmsanchez93/sap-test-backend/
-
-```
-docker pull jesusmsanchez93/sap-test-backend
-```
-
 ## Output JSON structure
 
 Making a HTTP GET request to http://localhost:8087/api/categories will result in the following JSON:
